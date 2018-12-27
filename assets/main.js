@@ -1,5 +1,4 @@
 function updatePayAmount(elem) {
-  debugger
   let pay = parseFloat(document.getElementById('pay-amount').value) || 0;
   let newPayAmountElement = document.getElementById('new-pay-amount');
   [...document.getElementById('child-list').querySelectorAll('input')].forEach(i => {
@@ -38,4 +37,16 @@ function toggleTooth (tooth) {
   } else {
     tooth.src = "https://img.icons8.com/ios/50/000000/tooth.png";
   }
+  updateRemainingTeeth()
+}
+
+function updateRemainingTeeth () {
+  let elem = document.getElementById('teeth-remaining');
+  let teeth = 28;
+  [...document.querySelectorAll('.tooth')].forEach(tooth => {
+    if (tooth.src === "https://img.icons8.com/ios/50/000000/tooth-filled.png") {
+      teeth -= 1
+    }
+  });
+  elem.innerHTML = teeth
 }
