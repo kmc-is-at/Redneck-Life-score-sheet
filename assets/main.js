@@ -1,5 +1,6 @@
 function updatePayAmount(elem) {
-  let pay = parseFloat(document.getElementById('pay-amount').value);
+  debugger
+  let pay = parseFloat(document.getElementById('pay-amount').value) || 0;
   let newPayAmountElement = document.getElementById('new-pay-amount');
   [...document.getElementById('child-list').querySelectorAll('input')].forEach(i => {
     if (i.value !== "") {
