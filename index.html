@@ -1,6 +1,7 @@
 <html>
   <head>
-
+    <link rel="stylesheet" href="assets/styles.css">
+    <script src="assets/main.js"></script>
   </head>
 
   <body>
@@ -19,7 +20,7 @@
       <ul>
         <li>(Grade Completed): <input type="number"/></li>
         <li>Occupation: <input type="text"/></li>
-        <li>Payday Amount: $<input type="number"/></li>
+        <li>Payday Amount: $<input id="pay-amount" type="number"/></li>
       </ul>
     </section>
     <hr>
@@ -27,10 +28,11 @@
     <section>
       <h3>Chart 2. First Spouse's Name: <input type="text"></h3>
       <h3>Insurance? (optional - yes: pay $100, no: pay $0)</h3>
+      Your Insurance Bill: $<span id="insurance-bill">0</span>
       <ul>
-        <li><input type="checkbox" name="" id=""> Home</li>
-        <li><input type="checkbox" name="" id=""> Health</li>
-        <li><input type="checkbox" name="" id=""> Rig</li>
+        <li><input type="checkbox" onclick="updateInsuranceBill(this)"> Home</li>
+        <li><input type="checkbox" onclick="updateInsuranceBill(this)"> Health</li>
+        <li><input type="checkbox" onclick="updateInsuranceBill(this)"> Rig</li>
       </ul>
     </section>
     <hr>
@@ -42,16 +44,16 @@
 
     <section>
       <h3>List Young'ens Names: </h3>
-      <ol>
-        <li><input type="text"></li>
-        <li><input type="text"></li>
-        <li><input type="text"></li>
-        <li><input type="text"></li>
-        <li><input type="text"></li>
-        <li><input type="text"></li>
-        <li><input type="text"></li>
-        <li><input type="text"></li>
+      <span id="new-pay-amount"></span>
+      <ol id="child-list">
+        <li><input type="text" oninput="updatePayAmount(this)"></li>
+        <li><input type="text" oninput="updatePayAmount(this)"></li>
+        <li><input type="text" oninput="updatePayAmount(this)"></li>
+        <li><input type="text" oninput="updatePayAmount(this)"></li>
+        <li><input type="text" oninput="updatePayAmount(this)"></li>
       </ol>
+
+      <button onclick="addAnotherChildSpace()"> Add Another Child</button>
     </section>
   
     <section>
