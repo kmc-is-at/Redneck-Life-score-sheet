@@ -31,3 +31,11 @@ function updateInsuranceBill (elem) {
   }
   bill.innerHTML = value;
 }
+
+function toggleTooth (tooth) {
+  if (tooth.src === "https://img.icons8.com/ios/50/000000/tooth.png") {
+    tooth.src = "https://img.icons8.com/ios/50/000000/tooth-filled.png";
+  } else {
+    tooth.src = "https://img.icons8.com/ios/50/000000/tooth.png";
+  }
+}

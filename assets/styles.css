@@ -5,3 +5,16 @@ body {
 ul li {
   list-style: none;
 }
+
+footer {
+  margin-top: 50px;
+}
+
+.legal {
+  font-size: 2px;
+  color: grey;
+}
+
+section {
+  margin: 15px;
+}
