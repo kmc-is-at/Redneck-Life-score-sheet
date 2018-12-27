@@ -4,6 +4,7 @@ body {
 
 ul li {
   list-style: none;
+  margin-bottom: 10px;
 }
 
 footer {
@@ -17,4 +18,19 @@ footer {
 
 section {
   margin: 15px;
+}
+
+button {
+  color: blue;
+}
+
+input:not([type="checkbox"]) {
+  border-bottom: 1px solid black;
+  font-size: 15pt;
+  width: 95%;
+}
+
+input[type="checkbox"] {
+  transform: scale(3);
+  margin: 10px;
 }
