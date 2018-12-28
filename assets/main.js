@@ -48,5 +48,7 @@ function updateRemainingTeeth () {
       teeth -= 1
     }
   });
-  elem.innerHTML = teeth
+  elem.innerHTML = teeth;
+  let storage = new PersistentStateRegistry();
+  storage.set("lost-tooth-count", 28 - teeth, "session");
 }

@@ -122,8 +122,13 @@
           updateInsuranceBill(elem);
         }
 
-        let storage = new PersistentStateRegistry();
-      })
+      });
+      let storage = new PersistentStateRegistry();
+      let toothCount = storage.get("lost-tooth-count", "session") || 0;
+      let teeth = [...document.querySelectorAll('.tooth')];
+      for (let i = 0; i < toothCount; i++) {
+        teeth[i].click();
+      }
     })
     </script>
   </body>
