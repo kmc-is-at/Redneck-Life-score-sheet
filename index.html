@@ -4,6 +4,7 @@
     <script src="assets/main.js"></script>
     <link rel="icon" type="image/png" href="https://img.icons8.com/ios/50/000000/tooth.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="node_modules/persistent-state/persistent-state.js"></script>
   </head>
 
   <body>
@@ -13,35 +14,41 @@
         Fill out the top line before the game starts. See the center of the board for names. The other lines will be
         filled in as the game progresses!
       </p>
-      <h3>Your New Redneck Name: <input type="text"/></h3>
+      <h3>
+        Your New Redneck Name: 
+        <persistent-state type="session">
+          <input id="your-name" type="text">
+        </persistent-state>
+      </h3>
     </section>
     <hr>
 
     <section>
       <h3>Chart 1. Education Level</h3>
       <ul>
-        <li>(Grade Completed): <input type="number"/></li>
-        <li>Occupation: <input type="text"/></li>
-        <li>Payday Amount: $<input id="pay-amount" type="number"/>*</li>
+        <li>(Grade Completed): <persistent-state type="session"><input id="grade" type="number"/></persistent-state></li>
+        <li>Occupation: <persistent-state type="session"><input id="occupation" type="text"/></persistent-state></li>
+        <li>Payday Amount: $<persistent-state type="session"><input id="pay-amount" type="number"/>*</persistent-state></li>
       </ul>
       * <em>Collect when passing Payday. (Collect an extra $20 if landing on a Payday)</em>
     </section>
     <hr>
 
     <section>
-      <h3>Chart 2. First Spouse's Name: <input type="text"></h3>
-      <h3>Insurance? (optional - yes: pay $100, no: pay $0)</h3>
+      <h3>Chart 2. First Spouse's Name: <persistent-state type="session"><input id="first-wife" type="text"></persistent-state></h3>
+      <h3>Insurance? </h3>
+      <em>(optional - yes: pay $100, no: pay $0)</em>
       Your Insurance Bill: $<span id="insurance-bill">0</span>
       <ul>
-        <li><input type="checkbox" onclick="updateInsuranceBill(this)"> Home</li>
-        <li><input type="checkbox" onclick="updateInsuranceBill(this)"> Health</li>
-        <li><input type="checkbox" onclick="updateInsuranceBill(this)"> Rig</li>
+        <li><persistent-state type="session"><input id="home-insurance" type="checkbox" onclick="updateInsuranceBill(this)"> Home</persistent-state></li>
+        <li><persistent-state type="session"><input id="health-insurance" type="checkbox" onclick="updateInsuranceBill(this)"> Health</persistent-state></li>
+        <li><persistent-state type="session"><input id="rig-insurance" type="checkbox" onclick="updateInsuranceBill(this)"> Rig</persistent-state></li>
       </ul>
     </section>
     <hr>
     
     <section>
-      <h3>Chart 4. Second Spouse's Name: <input type="text"></h3>
+      <h3>Chart 4. Second Spouse's Name: <persistent-state type="session"><input id="second-spouse" type="text"></persistent-state></h3>
     </section>
     <hr>
 
@@ -106,5 +113,18 @@
         <a href="https://icons8.com/icon/4948/tooth">Tooth icon by Icons8</a>
       </small>
     </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      ["home-insurance", "health-insurance", "rig-insurance"].forEach(id => {
+        let elem = document.getElementById(id);
+        if (elem.checked) {
+          updateInsuranceBill(elem);
+        }
+
+        let storage = new PersistentStateRegistry();
+      })
+    })
+    </script>
   </body>
 </html>

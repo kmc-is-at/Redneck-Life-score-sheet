@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "persistent-state": "kyle-west/persistent-state"
+  }
+}
