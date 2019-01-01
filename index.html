@@ -1,5 +1,6 @@
 <html>
   <head>
+    <title>Redneck Life Score Sheet</title>
     <link rel="stylesheet" href="assets/styles.css">
     <script src="assets/main.js"></script>
     <link rel="icon" type="image/png" href="https://img.icons8.com/ios/50/000000/tooth.png">
@@ -28,7 +29,7 @@
       <ul>
         <li>(Grade Completed): <persistent-state type="session"><input id="grade" type="number"/></persistent-state></li>
         <li>Occupation: <persistent-state type="session"><input id="occupation" type="text"/></persistent-state></li>
-        <li>Payday Amount: $<persistent-state type="session"><input id="pay-amount" type="number"/>*</persistent-state></li>
+        <li>Payday Amount: $<persistent-state type="session"><input id="pay-amount" type="number" oninput="updatePayAmount()"/>*</persistent-state></li>
       </ul>
       * <em>Collect when passing Payday. (Collect an extra $20 if landing on a Payday)</em>
     </section>
@@ -55,13 +56,7 @@
     <section>
       <h3>List Young'ens Names: </h3>
       <span id="new-pay-amount"></span>
-      <ol id="child-list">
-        <li><input type="text" oninput="updatePayAmount(this)"></li>
-        <li><input type="text" oninput="updatePayAmount(this)"></li>
-        <li><input type="text" oninput="updatePayAmount(this)"></li>
-        <li><input type="text" oninput="updatePayAmount(this)"></li>
-        <li><input type="text" oninput="updatePayAmount(this)"></li>
-      </ol>
+      <ol id="child-list"></ol>
 
       <button onclick="addAnotherChildSpace()"> Add Another Child</button>
     </section>
@@ -101,21 +96,34 @@
       <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
     </section>
     <hr>
-
+    
     <section>
       <h3>Final Score</h3>
       <em>See "Day of Reckon'n" Chart</em>
     </section>
-
+    <hr>
+    
+    <section>
+      <button onclick="resetGame()">Reset Game</button>
+    </section>
+    <hr>
+    
     <footer>
-      <small>Legal Stuff:</small>
       <small class="legal">
-        <a href="https://icons8.com/icon/4948/tooth">Tooth icon by Icons8</a>
+        <a href="https://www.gutbustingames.com/store/p1/Redneck_Life_Board_Game.html">Redneck Life is a trademark of <em>Gut Bustin' Games</em></a>,
+        and is NOT affiliated with this site. This application is merely fan-driven, and claims no ownership rights or liability. This software is 
+        not distributed for anyone to use, except those authorized.
+      </small>
+      <small class="legal">
+        <a href="https://icons8.com/icon/4948/tooth">Tooth icons by Icons8</a>
       </small>
     </footer>
 
     <script>
     document.addEventListener('DOMContentLoaded', () => {
+      const storage = new PersistentStateRegistry();
+
+      // Check boxes need to update the insurance cost display
       ["home-insurance", "health-insurance", "rig-insurance"].forEach(id => {
         let elem = document.getElementById(id);
         if (elem.checked) {
@@ -123,12 +131,21 @@
         }
 
       });
-      let storage = new PersistentStateRegistry();
+
+      // Restore tooth count, since they are not compatible with the persistent-state elements
       let toothCount = storage.get("lost-tooth-count", "session") || 0;
       let teeth = [...document.querySelectorAll('.tooth')];
       for (let i = 0; i < toothCount; i++) {
         teeth[i].click();
       }
+      
+      // dynamic content, like the number and names of children, must be made persistent manually
+      let children = JSON.parse(storage.get("listed-children", "session")) || ["", "", "", "", ""];
+      children.forEach(name => {
+        let elem = addAnotherChildSpace();
+        elem.value = name;
+      });
+      updatePayAmount();
     })
     </script>
   </body>

@@ -1,4 +1,4 @@
-function updatePayAmount(elem) {
+function updatePayAmount() {
   let pay = parseFloat(document.getElementById('pay-amount').value) || 0;
   let newPayAmountElement = document.getElementById('new-pay-amount');
   [...document.getElementById('child-list').querySelectorAll('input')].forEach(i => {
@@ -9,6 +9,10 @@ function updatePayAmount(elem) {
   newPayAmountElement.innerHTML = "Your new Payday Amount is: $" + pay;
 }
 
+function getListedChildren () {
+  return [...document.querySelectorAll('#child-list input')].map(i=>i.value);
+}
+
 function addAnotherChildSpace () {
   let childList = document.getElementById('child-list');
   let newInput = document.createElement('input')
@@ -16,8 +20,12 @@ function addAnotherChildSpace () {
   newLi.appendChild(newInput)
   childList.appendChild(newLi);
   newInput.oninput = () => {
-    updatePayAmount(newInput);
+    updatePayAmount();
+    let children = JSON.stringify(getListedChildren());
+    let storage = new PersistentStateRegistry();
+    storage.set("listed-children", children, "session");
   }
+  return newInput;
 }
 
 function updateInsuranceBill (elem) {
@@ -51,4 +59,12 @@ function updateRemainingTeeth () {
   elem.innerHTML = teeth;
   let storage = new PersistentStateRegistry();
   storage.set("lost-tooth-count", 28 - teeth, "session");
+}
+
+function resetGame() {
+  let yes = window.confirm("You are about to lose your game history, are you sure you want to reset the game?");
+  if (yes) {
+    new PersistentStateRegistry().reset()
+    window.location.reload();
+  }
 }
