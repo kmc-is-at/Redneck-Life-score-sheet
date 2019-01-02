@@ -1,5 +1,9 @@
 {
+  "scripts": {
+    "preinstall": "rm -rf lib",
+    "postinstall": "mv node_modules lib"
+  },
   "dependencies": {
-    "persistent-state": "kyle-west/persistent-state"
+    "persistent-state": "kyle-west/persistent-state#^1"
   }
 }

@@ -1,15 +1,15 @@
 {
-  "systemParams": "darwin-x64-67",
+  "systemParams": "darwin-x64-57",
   "modulesFolders": [
     "node_modules"
   ],
   "flags": [],
   "linkedModules": [],
   "topLevelPatterns": [
-    "persistent-state@kyle-west/persistent-state"
+    "persistent-state@kyle-west/persistent-state#^1"
   ],
   "lockfileEntries": {
-    "persistent-state@kyle-west/persistent-state": "https://codeload.github.com/kyle-west/persistent-state/tar.gz/d9957dd03459d84d16c9792ff5ddb3a0c6a5d7fc"
+    "persistent-state@kyle-west/persistent-state#^1": "https://codeload.github.com/kyle-west/persistent-state/tar.gz/de8e9067e8acec71fd0cc167253869f537b2d22f"
   },
   "files": [],
   "artifacts": {}
