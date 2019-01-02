@@ -9,107 +9,106 @@
   </head>
 
   <body>
-    <section>
-      <h1>Redneck Life Score Sheet</h1>
-      <p>
-        Fill out the top line before the game starts. See the center of the board for names. The other lines will be
-        filled in as the game progresses!
-      </p>
-      <h3>
-        Your New Redneck Name: 
-        <persistent-state type="session">
-          <input id="your-name" type="text">
-        </persistent-state>
-      </h3>
-    </section>
+    <persistent-state type="session">
+      <section>
+        <h1>Redneck Life Score Sheet</h1>
+        <p>
+          Fill out the top line before the game starts. See the center of the board for names. The other lines will be
+          filled in as the game progresses!
+        </p>
+        <h3>
+          Your New Redneck Name: <input id="your-name" type="text">
+        </h3>
+      </section>
 
-    <section>
-      <h3>Chart 1. Education Level</h3>
-      <ul>
-        <li>(Grade Completed): <persistent-state type="session"><input id="grade" type="number"/></persistent-state></li>
-        <li>Occupation: <persistent-state type="session"><input id="occupation" type="text"/></persistent-state></li>
-        <li>Payday Amount: $<persistent-state type="session"><input id="pay-amount" type="number" oninput="updatePayAmount()"/>*</persistent-state></li>
-      </ul>
-      * <em>Collect when passing Payday. (Collect an extra $20 if landing on a Payday)</em>
-    </section>
+      <section>
+        <h3>Chart 1. Education Level</h3>
+        <ul>
+          <li>(Grade Completed): <input id="grade" type="number"/></li>
+          <li>Occupation: <input id="occupation" type="text"/></li>
+          <li>Payday Amount: $<input id="pay-amount" type="number" oninput="updatePayAmount()"/>*</li>
+        </ul>
+        * <em>Collect when passing Payday. (Collect an extra $20 if landing on a Payday)</em>
+      </section>
 
-    <section>
-      <h3>Chart 2. First Spouse's Name: <persistent-state type="session"><input id="first-wife" type="text"></persistent-state></h3>
-      <h3>Insurance? </h3>
-      <em>(optional - yes: pay $100, no: pay $0)</em>
-      Your Insurance Bill: $<span id="insurance-bill">0</span>
-      <ul>
-        <li><persistent-state type="session"><input id="home-insurance" type="checkbox" onclick="updateInsuranceBill(this)"> Home</persistent-state></li>
-        <li><persistent-state type="session"><input id="health-insurance" type="checkbox" onclick="updateInsuranceBill(this)"> Health</persistent-state></li>
-        <li><persistent-state type="session"><input id="rig-insurance" type="checkbox" onclick="updateInsuranceBill(this)"> Rig</persistent-state></li>
-      </ul>
-    </section>
-    
-    <section>
-      <h3>Chart 4. Second Spouse's Name: <persistent-state type="session"><input id="second-spouse" type="text"></persistent-state></h3>
-    </section>
+      <section>
+        <h3>Chart 2. First Spouse's Name: <input id="first-wife" type="text"></h3>
+        <h3>Insurance? </h3>
+        <em>(optional - yes: pay $100, no: pay $0)</em>
+        Your Insurance Bill: $<span id="insurance-bill">0</span>
+        <ul>
+          <li><input id="home-insurance" type="checkbox" onclick="updateInsuranceBill(this)"> Home</li>
+          <li><input id="health-insurance" type="checkbox" onclick="updateInsuranceBill(this)"> Health</li>
+          <li><input id="rig-insurance" type="checkbox" onclick="updateInsuranceBill(this)"> Rig</li>
+        </ul>
+      </section>
+      
+      <section>
+        <h3>Chart 4. Second Spouse's Name: <input id="second-spouse" type="text"></h3>
+      </section>
 
-    <section>
-      <h3>List Young'ens Names: </h3>
-      <span id="new-pay-amount"></span>
-      <ol id="child-list"></ol>
+      <section>
+        <h3>List Young'ens Names: </h3>
+        <span id="new-pay-amount"></span>
+        <ol id="child-list"></ol>
 
-      <button onclick="addAnotherChildSpace()"> Add Another Child</button>
-    </section>
+        <button onclick="addAnotherChildSpace()"> Add Another Child</button>
+      </section>
 
-    <section>
-      <h4>
-        Teeth Remaining: <span id="teeth-remaining">28</span>
-      </h4>
-      <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
-      <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
-      <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
-      <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
-      <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
-      <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
-      <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
-      <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
-      <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
-      <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
-      <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
-      <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
-      <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
-      <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
-      <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
-      <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
-      <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
-      <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
-      <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
-      <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
-      <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
-      <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
-      <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
-      <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
-      <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
-      <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
-      <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
-      <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
-    </section>
-    
-    <section>
-      <h3>Final Score</h3>
-      <em>See "Day of Reckon'n" Chart</em>
-    </section>
-    
-    <section>
-      <button onclick="resetGame()">Reset Game</button>
-    </section>
-    
-    <footer>
-      <small class="legal">
-        <a href="https://www.gutbustingames.com/store/p1/Redneck_Life_Board_Game.html">Redneck Life is a trademark of <em>Gut Bustin' Games</em></a>,
-        and is NOT affiliated with this site. This application is merely fan-driven, and claims no ownership rights or liability. This software is 
-        not distributed for anyone to use, except those authorized.
-      </small>
-      <small class="legal">
-        <a href="https://icons8.com/icon/4948/tooth">Tooth icons by Icons8</a>
-      </small>
-    </footer>
+      <section>
+        <h4>
+          Teeth Remaining: <span id="teeth-remaining">28</span>
+        </h4>
+        <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
+        <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
+        <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
+        <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
+        <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
+        <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
+        <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
+        <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
+        <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
+        <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
+        <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
+        <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
+        <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
+        <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
+        <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
+        <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
+        <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
+        <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
+        <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
+        <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
+        <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
+        <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
+        <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
+        <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
+        <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
+        <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
+        <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
+        <img class="tooth" src="https://img.icons8.com/ios/50/000000/tooth.png" onclick="toggleTooth(this)">
+      </section>
+      
+      <section>
+        <h3>Final Score</h3>
+        <em>See "Day of Reckon'n" Chart</em>
+      </section>
+      
+      <section>
+        <button onclick="resetGame()">Reset Game</button>
+      </section>
+      
+      <footer>
+        <small class="legal">
+          <a href="https://www.gutbustingames.com/store/p1/Redneck_Life_Board_Game.html">Redneck Life is a trademark of <em>Gut Bustin' Games</em></a>,
+          and is NOT affiliated with this site. This application is merely fan-driven, and claims no ownership rights or liability. This software is 
+          not distributed for anyone to use, except those authorized.
+        </small>
+        <small class="legal">
+          <a href="https://icons8.com/icon/4948/tooth">Tooth icons by Icons8</a>
+        </small>
+      </footer>
+    </persistent-state>
 
     <script>
     document.addEventListener('DOMContentLoaded', () => {
