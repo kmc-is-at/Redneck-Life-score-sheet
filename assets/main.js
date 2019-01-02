@@ -6,7 +6,9 @@ function updatePayAmount() {
       pay -= 10;
     }
   })
-  newPayAmountElement.innerHTML = "Your new Payday Amount is: $" + pay;
+
+  if (pay < 0) pay = 0;
+  newPayAmountElement.innerHTML = `Your new Payday Amount is: <b>$${pay}</b>`;
 }
 
 function getListedChildren () {
